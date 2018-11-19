@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>innerHTML vs textContent</h1>
+
+    <input type="text" placeholder="Remember to do..." />
+    <button>textContent</button> <button>innerHTML</button>
+
+    <h3>Remember to do:</h3>
+    <h4></h4>
+
+    <hr />
+    <p>
+      Hint: try to input <br /><br />
+      <code
+        >&lt;img
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+        onload="window.location.replace('https://google.com');"&gt; </code
+      ><br /><br />
+      and see what happens if you click on both on them
+    </p>
+
+    <script>
+      const input = document.querySelector("input[type='text']");
+      const button1 = document.querySelector("button:first-of-type");
+      const button2 = document.querySelector("button:last-of-type");
+      const todo = document.querySelector("h4");
+
+      button1.addEventListener("click", button1Todo);
+
+      //textContent
+      function button1Todo() {
+        todo.textContent = input.value;
+      }
+
+      button2.addEventListener("click", button2Todo);
+      //innerHTML
+      function button2Todo() {
+        todo.innerHTML = input.value;
+      }
+    </script>
+  </body>
+</html>
