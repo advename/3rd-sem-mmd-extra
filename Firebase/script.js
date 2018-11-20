@@ -27,14 +27,23 @@ db.settings({
 //Our own code to play around with firebase :-)
 //==============================================================
 //==============================================================
-const email = document.querySelector("input[type='email']");
-const password = document.querySelector("input[type='password']");
-const login = document.querySelector("#login");
-const logout = document.querySelector("button");
+const logoutButton = document.querySelector("#logout");
 
-const todo = document.querySelector("input[type='text']");
-const addTodo = document.querySelector("#add-todo");
-const todoList = document.querySelector("ul");
+const signUpEmail = document.querySelector("#signup input[type='email']");
+const signUpPassword = document.querySelector("#signup [type='password']");
+const signUpButton = document.querySelector("#signup .submit");
+const signUpMsg = document.querySelector("#signup p");
+
+const loginEmail = document.querySelector("#login input[type='email']");
+const loginPassword = document.querySelector("#login [type='password']");
+const loginButton = document.querySelector("#login .submit");
+const loginMsg = document.querySelector("#login p");
+
+const todo = document.querySelector("#addTodo input[type='text']");
+const addTodo = document.querySelector("#add-todo input[type='submit']");
+
+const todoList = document.querySelector("#todo-list ul");
+const todoListMsg = document.querySelector("#todo-list p");
 
 //Fetch todos and display them
 fetchTodos();
@@ -42,30 +51,55 @@ function fetchTodos() {
   db.collection("todos")
     .get()
     .then(querySnapshot => {
+      console.log(querySnapshot);
       querySnapshot.forEach(doc => {
         console.log(doc.data());
         todoList.innerHTML += `<li>${doc.data().title}</li>`;
+        todoListMsg.textContent = "";
       });
+    })
+    .catch(error => {
+      console.log("Xooo");
+      todoListMsg.textContent =
+        "User is not allowed to see data. Please login!";
+    });
+}
+
+//Signup new user
+signUpButton.addEventListener("click", signUpUser);
+
+function signUpUser(e) {
+  e.preventDefault();
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(signUpEmail.value, signUpPassword.value)
+    .then(() => {
+      console.log("Succesfull signup");
+      signUpMsg.textContent = "Signup Successfull";
+      fetchTodos();
+    })
+    .catch(function(error) {
+      console.log(error);
+      signUpMsg.textContent = "Signup error: " + error.message;
     });
 }
 
 //Login user
-login.addEventListener("click", authUser);
+loginButton.addEventListener("click", loginUser);
 
-function authUser(e) {
+function loginUser(e) {
   e.preventDefault();
   firebase
     .auth()
-    .signInWithEmailAndPassword(email.value, password.value)
+    .signInWithEmailAndPassword(loginEmail.value, loginPassword.value)
     .then(() => {
       console.log("Succesfull login");
+      loginMsg.textContent = "Login Successfull";
+      fetchTodos();
     })
     .catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ...
       console.log(error);
+      loginMsg.textContent = "Login error: " + error.message;
     });
 }
 
@@ -88,7 +122,7 @@ function createNewTodo(e) {
 }
 
 //Logout user
-logout.addEventListener("click", logoutUser);
+logoutButton.addEventListener("click", logoutUser);
 
 function logoutUser() {
   firebase

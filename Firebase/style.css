@@ -1,0 +1,25 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  background: #f9f9f9;
+}
+
+main {
+  margin: 2vh 2vw;
+  min-height: 80vh;
+  width: 96vw;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+
+div {
+  grid-column: span 1;
+  grid-row: span 1;
+  background: white;
+  padding: 10px;
+  border: 1px grey solid;
+  border-radius: 5px;
+}
