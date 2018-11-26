@@ -134,5 +134,6 @@ function logoutUser() {
     .catch(function(error) {
       // An error happened.
       console.log(err);
+      l;
     });
 }
