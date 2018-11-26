@@ -23,3 +23,8 @@ div {
   border: 1px grey solid;
   border-radius: 5px;
 }
+
+button {
+  display: block;
+  margin: 0 auto;
+}
