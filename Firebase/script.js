@@ -30,12 +30,12 @@ db.settings({
 const logoutButton = document.querySelector("#logout");
 
 const signUpEmail = document.querySelector("#signup input[type='email']");
-const signUpPassword = document.querySelector("#signup [type='password']");
+const signUpPassword = document.querySelector("#signup input[type='password']");
 const signUpButton = document.querySelector("#signup .submit");
 const signUpMsg = document.querySelector("#signup p");
 
 const loginEmail = document.querySelector("#login input[type='email']");
-const loginPassword = document.querySelector("#login [type='password']");
+const loginPassword = document.querySelector("#login input[type='password']");
 const loginButton = document.querySelector("#login .submit");
 const loginMsg = document.querySelector("#login p");
 
