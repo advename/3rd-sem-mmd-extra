@@ -1,7 +1,7 @@
 # 3rd Semester Front End Extra Curriculum
 
 These files should be used to demonstrate particular cases of webdev security.
-They are based on [this presentation](https://docs.google.com/presentation/d/1yUZPuLhBBv7fD8Z_nBg20C7qUNCOX1I31mFgII3ztFU/edit?usp=sharing).
+They are based on [this presentation](https://goo.gl/CziJMY).
 
 ## 1. Test password against a password list
 
